@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
         {
             var newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            newBullet.Shoot(Vector3.up);
         }
     }
 }

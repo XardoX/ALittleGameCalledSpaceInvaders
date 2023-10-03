@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -10,9 +11,12 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rb;
 
-
-    private void FixedUpdate()
+    public void Shoot(Vector3 direction)
     {
-        rb.velocity = new Vector3(0f, speed, 0f);
+        rb.velocity = direction * speed;
     }
+
+   
+
+
 }
