@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float speed = 10f;
 
+    [SerializeField]
+    private Bullet bulletPrefab;
+
     private float inputX;
 
     // Update is called once per frame
@@ -29,7 +32,7 @@ public class Player : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("dziala");
+            var newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         }
     }
 }
