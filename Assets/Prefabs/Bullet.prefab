@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6868722069086129631}
   - component: {fileID: 7270244361977115482}
   - component: {fileID: 6660105664911428540}
-  - component: {fileID: 7301458226746619335}
   - component: {fileID: 8409012281589189828}
+  - component: {fileID: 7301458226746619335}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7270244361977115482
 SpriteRenderer:
@@ -122,18 +122,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 0
---- !u!114 &7301458226746619335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8471084660215054712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 357a4b1569d7ad7468b24ed62b5a680c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &8409012281589189828
 Rigidbody2D:
   serializedVersion: 4
@@ -161,3 +149,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7301458226746619335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8471084660215054712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 357a4b1569d7ad7468b24ed62b5a680c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  rb: {fileID: 8409012281589189828}
