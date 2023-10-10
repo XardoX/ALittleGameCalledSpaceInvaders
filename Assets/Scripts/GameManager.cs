@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         else Destroy(this);
+
+
     }
 
     void OnTriggerExit2D(Collider2D other)
