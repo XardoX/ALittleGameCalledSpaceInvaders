@@ -14,8 +14,13 @@ public class Enemy : Ship, IDamagable
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            Shoot();
+            Shoot(Vector3.down);
         }
+    }
+
+    protected override void OnDamage()
+    {
+
     }
 
     public void Damage()

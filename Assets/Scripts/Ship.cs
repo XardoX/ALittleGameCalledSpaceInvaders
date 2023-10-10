@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
-
     [SerializeField]
     protected Bullet bulletPrefab;
-    protected void Shoot()
+
+    protected virtual void Shoot(Vector3 direction)
     {
         var newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        newBullet.Shoot(Vector3.down);
+        newBullet.Shoot(direction);
+    }
+
+    protected virtual void OnDamage()
+    {
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Bullet"))
+        {
+            OnDamage();
+        }
     }
 }

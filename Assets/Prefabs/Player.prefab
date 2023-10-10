@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8edc631e5d577864793366710ecfda6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
   bulletPrefab: {fileID: 7301458226746619335, guid: 9e34a9b5aae618e44b007c169bb442a4, type: 3}
+  speed: 10
   bounds: {x: 8, y: 0}
 --- !u!60 &5589675790748361469
 PolygonCollider2D:
@@ -130,7 +130,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

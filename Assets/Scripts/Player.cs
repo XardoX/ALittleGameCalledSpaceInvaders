@@ -19,7 +19,11 @@ public class Player : Ship, IDamagable
     void Update()
     {
         Move();
-        Shoot();
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shoot(Vector3.up);
+        }
+
     }
 
     private void Move()
@@ -31,14 +35,6 @@ public class Player : Ship, IDamagable
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -bounds.x, bounds.x), transform.position.y); 
     }
 
-    private void Shoot()
-    {
-        if(Input.GetButtonDown("Fire1"))
-        {
-            var newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            newBullet.Shoot(Vector3.up);
-        }
-    }
 
     public void Damage()
     {
