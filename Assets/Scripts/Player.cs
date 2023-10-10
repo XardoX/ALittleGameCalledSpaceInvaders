@@ -4,19 +4,15 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Ship, IDamagable
 {
     [SerializeField]
     private float speed = 10f;
 
     [SerializeField]
-    private Bullet bulletPrefab;
-
-    [SerializeField]
     private Vector2 bounds;
 
     private float inputX;
-
 
 
     // Update is called once per frame
@@ -31,7 +27,8 @@ public class Player : MonoBehaviour
         inputX = Input.GetAxis("Horizontal");
 
         transform.position += new Vector3(inputX * speed * Time.deltaTime, 0f, 0f);
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -bounds.x, bounds.x), transform.position.y);
+
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -bounds.x, bounds.x), transform.position.y); 
     }
 
     private void Shoot()
@@ -41,5 +38,10 @@ public class Player : MonoBehaviour
             var newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             newBullet.Shoot(Vector3.up);
         }
+    }
+
+    public void Damage()
+    {
+        Debug.Log("damage");
     }
 }

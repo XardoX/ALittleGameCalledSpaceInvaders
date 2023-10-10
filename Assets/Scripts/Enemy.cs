@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Ship, IDamagable
 {
-    [SerializeField]
-    private Bullet bulletPrefab;
-
-
     private void Start()
     {
         StartCoroutine(ConstantShoot());
@@ -21,9 +17,8 @@ public class Enemy : MonoBehaviour
             Shoot();
         }
     }
-    private void Shoot()
+
+    public void Damage()
     {
-        var newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        newBullet.Shoot(Vector3.down);
     }
 }

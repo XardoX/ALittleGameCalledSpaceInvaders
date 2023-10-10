@@ -16,7 +16,13 @@ public class Bullet : MonoBehaviour
         rb.velocity = direction * speed;
     }
 
-   
+    //private void OnTriggerEnter2D(Collider2D collider)
+    //{
+    //    if(collider.gameObject.CompareTag("Enemy") || collider.gameObject.CompareTag("Player"))
+    //    {
+    //        collider.gameObject.GetComponent<IDamagable>().Damage();
+    //    }
+    //}
 
 
 }
