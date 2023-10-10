@@ -12,7 +12,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Bullet bulletPrefab;
 
+    [SerializeField]
+    private Vector2 bounds;
+
     private float inputX;
+
+
 
     // Update is called once per frame
     void Update()
@@ -26,6 +31,7 @@ public class Player : MonoBehaviour
         inputX = Input.GetAxis("Horizontal");
 
         transform.position += new Vector3(inputX * speed * Time.deltaTime, 0f, 0f);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -bounds.x, bounds.x), transform.position.y);
     }
 
     private void Shoot()
