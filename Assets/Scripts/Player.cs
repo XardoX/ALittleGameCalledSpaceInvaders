@@ -43,4 +43,13 @@ public class Player : Ship, IDamagable
     {
         Debug.Log("damage");
     }
+
+    protected override void OnDamage()
+    {
+        health--;
+        if(health <=0)
+        {
+            GameManager.instance.ResetGame();
+        }
+    }
 }

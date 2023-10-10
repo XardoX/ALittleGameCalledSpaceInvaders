@@ -22,6 +22,7 @@ public class Ship : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Bullet"))
         {
+            Destroy(collision.gameObject);
             OnDamage();
         }
     }
