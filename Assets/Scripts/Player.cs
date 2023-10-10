@@ -7,6 +7,9 @@ using UnityEngine;
 public class Player : Ship, IDamagable
 {
     [SerializeField]
+    private int health = 3;
+
+    [SerializeField]
     private float speed = 10f;
 
     [SerializeField]

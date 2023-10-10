@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4440799039017564232}
   - component: {fileID: 2301032047188088254}
   - component: {fileID: 135643528254403438}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4440799039017564232
 SpriteRenderer:
@@ -143,4 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3141470adebd2284ba9dc9cd78b7badc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7301458226746619335, guid: 9e34a9b5aae618e44b007c169bb442a4, type: 3}
+  bulletPrefab: {fileID: 7364451781773201026, guid: 2d720d1f454fd9b47a9b81c2e6095b85, type: 3}

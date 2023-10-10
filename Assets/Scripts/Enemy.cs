@@ -20,7 +20,7 @@ public class Enemy : Ship, IDamagable
 
     protected override void OnDamage()
     {
-
+        Destroy(gameObject);
     }
 
     public void Damage()
