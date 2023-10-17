@@ -7,7 +7,7 @@ public class Ship : MonoBehaviour
     [SerializeField]
     protected Bullet bulletPrefab;
 
-    protected virtual void Shoot(Vector3 direction)
+    public virtual void Shoot(Vector3 direction)
     {
         var newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         newBullet.Shoot(direction);
