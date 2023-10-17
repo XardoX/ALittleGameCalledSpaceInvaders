@@ -630,6 +630,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &922033706 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7197478082976952397, guid: d0911b36c3e7770409eee6f329c020a8, type: 3}
+  m_PrefabInstance: {fileID: 50451029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1344765321
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,6 +653,7 @@ GameObject:
   - component: {fileID: 1344765324}
   - component: {fileID: 1344765323}
   - component: {fileID: 1344765322}
+  - component: {fileID: 1344765326}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -733,6 +745,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1344765326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344765321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e4adc0725d28964587c0b2f6d365782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyIcons:
+  - {fileID: 4311081147125684443}
+  - {fileID: 922033706}
+  energyIconsParent: {fileID: 2043700909}
 --- !u!1 &1894759260
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,6 +791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bca93c52825af42ac0acad1ac6289e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiManager: {fileID: 1344765326}
 --- !u!61 &1894759262
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1056,6 +1085,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1881309529457285931, guid: d0911b36c3e7770409eee6f329c020a8, type: 3}
   m_PrefabInstance: {fileID: 4311081147125684441}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4311081147125684443 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7197478082976952397, guid: d0911b36c3e7770409eee6f329c020a8, type: 3}
+  m_PrefabInstance: {fileID: 4311081147125684441}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8692594769621399658
 PrefabInstance:
   m_ObjectHideFlags: 0

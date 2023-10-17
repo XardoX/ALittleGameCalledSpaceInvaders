@@ -47,6 +47,7 @@ public class Player : Ship, IDamagable
     protected override void OnDamage()
     {
         health--;
+        GameManager.instance.UIManager.SetEnergy(health);
         if(health <=0)
         {
             GameManager.instance.ResetGame();

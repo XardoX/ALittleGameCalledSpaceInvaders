@@ -7,6 +7,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [SerializeField]
+    private UIManager uiManager;
+
+    public UIManager UIManager => uiManager;
+
     public void ResetGame()
     {
         SceneManager.LoadSceneAsync("Main");
