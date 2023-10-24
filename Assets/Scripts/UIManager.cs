@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
@@ -11,6 +12,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Transform energyIconsParent;
 
+    [SerializeField]
+    private TextMeshProUGUI scoreText;
     private void Awake()
     {
         energyIcons = energyIconsParent.GetComponentsInChildren<Image>(true);
@@ -27,6 +30,11 @@ public class UIManager : MonoBehaviour
         {
             energyIcons[i].gameObject.SetActive(true);
         }
+    }
+
+    public void DispayScore(int score)
+    {
+        scoreText.text = $"score: {score}";
     }
 
 }

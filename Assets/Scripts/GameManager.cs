@@ -12,9 +12,19 @@ public class GameManager : MonoBehaviour
 
     public UIManager UIManager => uiManager;
 
+    [SerializeField]
+
+    private int score;
+
     public void ResetGame()
     {
         SceneManager.LoadSceneAsync("Main");
+    }
+
+    public void AddScore(int value)
+    {
+        score += value;
+        uiManager.DispayScore(score);
     }
 
     private void Awake()
@@ -25,7 +35,6 @@ public class GameManager : MonoBehaviour
         }
         else Destroy(this);
 
-
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -35,5 +44,7 @@ public class GameManager : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
+
 
 }

@@ -55,6 +55,7 @@ public class EnemyManager : MonoBehaviour
     private void OnEnemyDeath(Enemy enemy)
     {
         enemies.ForEach(_ => _.Remove(enemy));
+        GameManager.instance.AddScore(10);
     }
 
     IEnumerator ControlEnemyShooting()
