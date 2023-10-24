@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7116231603285270773
 SpriteRenderer:
@@ -143,4 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac474f9c3e8f314dad70a94829ae2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  bulletPrefab: {fileID: 0}
+  spriteRenderer: {fileID: 7116231603285270773}
+  health: 3

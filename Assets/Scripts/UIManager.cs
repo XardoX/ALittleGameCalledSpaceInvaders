@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     private Transform energyIconsParent;
 
     [SerializeField]
-    private TextMeshProUGUI scoreText;
+    private TextMeshProUGUI scoreText, highscoreText;
     private void Awake()
     {
         energyIcons = energyIconsParent.GetComponentsInChildren<Image>(true);
@@ -35,6 +35,11 @@ public class UIManager : MonoBehaviour
     public void DispayScore(int score)
     {
         scoreText.text = $"score: {score}";
+    }
+    
+    public void DisplayHighscore(int highscore)
+    {
+        highscoreText.text = $"highscore: {highscore}"; 
     }
 
 }

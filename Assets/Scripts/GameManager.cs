@@ -14,16 +14,27 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
 
-    private int score;
+    private int score, highscore;
+
+  
 
     public void ResetGame()
     {
         SceneManager.LoadSceneAsync("Main");
+        score = 0;
+        uiManager.DispayScore(score);
+        uiManager.DisplayHighscore(highscore);
     }
 
     public void AddScore(int value)
     {
         score += value;
+        if (score >= highscore)
+        {
+            highscore = score;
+            uiManager.DisplayHighscore(highscore);
+
+        }
         uiManager.DispayScore(score);
     }
 
@@ -33,8 +44,9 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-        else Destroy(this);
+        else Destroy(gameObject);
 
+        DontDestroyOnLoad(gameObject);
     }
 
     void OnTriggerExit2D(Collider2D other)
