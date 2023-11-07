@@ -7,9 +7,9 @@ public class Bunker : Ship
 {
     [SerializeField]
     private SpriteRenderer spriteRenderer;
+
     [SerializeField]
     private int health = 3;
-
 
     private int currentHealth;
 
@@ -19,12 +19,13 @@ public class Bunker : Ship
     {
         currentHealth = health;
     }
+
     protected override void OnDamage()
     {
         currentHealth--;
         Color spriteColor = spriteRenderer.color;
         Debug.Log((float)currentHealth / (float)health);
-        spriteColor.a = (currentHealth / health) * 255f;
+        spriteColor.a = (currentHealth / health);
         spriteRenderer.color = spriteColor;
         if(currentHealth <=0 )
         {

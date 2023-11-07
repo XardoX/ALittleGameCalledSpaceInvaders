@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using DG.Tweening;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -23,11 +24,20 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     private List<List<Enemy>> enemies = new();
 
+    [Space]
+    [Header("Fluff")]
+    [SerializeField]
+    private Ease enemiesSpawnEase;
+
+    [SerializeField]
+    private float enemiesYStartPos = 14f, enemiesYTargetPos =5f;
+
 
     private void Start()
     {
         SpawnEnemies();
-        StartCoroutine(ControlEnemyShooting());
+        enemiesParent.position = new Vector3(enemiesParent.position.x, enemiesYStartPos, enemiesParent.position.z);
+        StartCoroutine(StartEnemies());
     }
 
     private void SpawnEnemies()
@@ -52,13 +62,15 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    private void OnEnemyDeath(Enemy enemy)
+    private IEnumerator StartEnemies()
     {
-        enemies.ForEach(_ => _.Remove(enemy));
-        GameManager.instance.AddScore(10);
+        yield return new WaitForSeconds(.5f);
+        enemiesParent.DOMoveY(enemiesYTargetPos, 1f).SetEase(enemiesSpawnEase);
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(ControlEnemyShooting());
     }
 
-    IEnumerator ControlEnemyShooting()
+    private IEnumerator ControlEnemyShooting()
     {
         while (true)
         {
@@ -75,4 +87,11 @@ public class EnemyManager : MonoBehaviour
             
         }
     }
+
+    private void OnEnemyDeath(Enemy enemy)
+    {
+        enemies.ForEach(_ => _.Remove(enemy));
+        GameManager.instance.AddScore(10);
+    }
+
 }
