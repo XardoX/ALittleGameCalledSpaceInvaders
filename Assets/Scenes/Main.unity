@@ -1486,6 +1486,9 @@ MonoBehaviour:
   xOffset: 1.2
   yOffset: 1.2
   enemiesParent: {fileID: 1540146570}
+  enemiesSpawnEase: 21
+  enemiesYStartPos: 14
+  enemiesYTargetPos: 5
 --- !u!1 &2043700908
 GameObject:
   m_ObjectHideFlags: 0
