@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class Bunker : Ship
 {
     [SerializeField]
@@ -23,10 +23,7 @@ public class Bunker : Ship
     protected override void OnDamage()
     {
         currentHealth--;
-        Color spriteColor = spriteRenderer.color;
-        Debug.Log((float)currentHealth / (float)health);
-        spriteColor.a = (currentHealth / health);
-        spriteRenderer.color = spriteColor;
+        spriteRenderer.DOFade((float)currentHealth / (float)health, 0.10f);
         if(currentHealth <=0 )
         {
             OnDeath?.Invoke();
