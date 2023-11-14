@@ -17,7 +17,9 @@ public class Enemy : Ship, IDamagable
     protected override void OnDamage()
     {
         OnDeath?.Invoke(this);
-        deathParticle.transform.parent = null;
+        var deathParticle = ObjectPooler.Instance.GetPooledObject(0).GetComponent<ParticleSystem>();
+        deathParticle.gameObject.SetActive(true);
+        deathParticle.transform.position = transform.position;
         deathParticle.Play();
         Destroy(gameObject);
     }

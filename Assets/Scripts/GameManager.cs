@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     {
         if(other.CompareTag("Bullet"))
         {
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 

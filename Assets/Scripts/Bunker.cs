@@ -23,7 +23,7 @@ public class Bunker : Ship
     protected override void OnDamage()
     {
         currentHealth--;
-        spriteRenderer.DOFade((float)currentHealth / (float)health, 0.10f);
+        spriteRenderer.DOFade((float) currentHealth / (float)health, 0.10f);
         if(currentHealth <=0 )
         {
             OnDeath?.Invoke();

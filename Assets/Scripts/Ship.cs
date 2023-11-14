@@ -5,12 +5,22 @@ using UnityEngine;
 public class Ship : MonoBehaviour
 {
     [SerializeField]
-    protected Bullet bulletPrefab;
+    protected Bullet bullet;
+    [SerializeField] private int bulletId = 1;
 
+    private void Awake()
+    {
+        bullet.transform.parent = null;
+    }
     public virtual void Shoot(Vector3 direction)
     {
-        var newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        newBullet.Shoot(direction);
+        if (!bullet.gameObject.activeInHierarchy)
+        {
+            bullet.transform.position = transform.position;
+            bullet.gameObject.SetActive(true);
+            bullet.Shoot(direction);
+        }
+        
     }
 
     protected virtual void OnDamage()
@@ -22,7 +32,7 @@ public class Ship : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Bullet"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
             OnDamage();
         }
     }

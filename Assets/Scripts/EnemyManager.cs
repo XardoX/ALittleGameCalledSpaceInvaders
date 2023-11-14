@@ -25,6 +25,14 @@ public class EnemyManager : MonoBehaviour
     private List<List<Enemy>> enemies = new();
 
     [Space]
+    [Header("Enemy Movement")]
+    [SerializeField]
+    private float distance = 0.1f, 
+        
+        moveInterval = 0.1f,
+        enemyMoveRange = 5f;
+
+    [Space]
     [Header("Fluff")]
     [SerializeField]
     private Ease enemiesSpawnEase;
@@ -32,6 +40,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     private float enemiesYStartPos = 14f, enemiesYTargetPos =5f;
 
+    private int direciton = 1;
 
     private void Start()
     {
@@ -68,6 +77,7 @@ public class EnemyManager : MonoBehaviour
         enemiesParent.DOMoveY(enemiesYTargetPos, 1f).SetEase(enemiesSpawnEase);
         yield return new WaitForSeconds(1f);
         StartCoroutine(ControlEnemyShooting());
+        StartCoroutine(MoveEnemies());
     }
 
     private IEnumerator ControlEnemyShooting()
@@ -84,7 +94,34 @@ public class EnemyManager : MonoBehaviour
             var randomEnemy = enemiesOnfront[Random.Range(0, enemiesOnfront.Count)];
             randomEnemy.Shoot(Vector2.down);
             yield return new WaitForSeconds(1f);
-            
+
+
+           
+        }
+    }
+
+    private IEnumerator MoveEnemies()
+    {
+        while(true)
+        {
+            if(Mathf.Abs(enemiesParent.transform.position.x) >= enemyMoveRange)
+            {
+                direciton = direciton * -1;
+            }
+            for (var i = 0; i < rows; i++)
+            {
+                foreach (var column in enemies)
+                {
+                    for (var j = 0; j < column.Count; j++)
+                    {
+                        var newPosition = column[j].transform.position + (Vector3.right * distance) *direciton;
+                        column[j].transform.position = newPosition;
+                        yield return new WaitForSeconds(moveInterval/2);
+
+                    }
+                }
+            }
+            yield return new WaitForSeconds(moveInterval);
         }
     }
 
