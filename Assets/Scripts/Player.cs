@@ -17,7 +17,10 @@ public class Player : Ship, IDamagable
 
     private float inputX;
 
-
+    public void ToggleGodMode(bool toggle)
+    {
+        singleBulletMode = !toggle;
+    }
     // Update is called once per frame
     void Update()
     {

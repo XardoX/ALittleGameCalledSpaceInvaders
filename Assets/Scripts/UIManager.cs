@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
@@ -14,9 +15,22 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI scoreText, highscoreText;
+
+    [SerializeField]
+    private Slider powerSlider;
     private void Awake()
     {
         energyIcons = energyIconsParent.GetComponentsInChildren<Image>(true);
+    }
+
+    public void SetPowerSlider(float power, float lerpDuration)
+    {
+        powerSlider.DOValue(power, lerpDuration);
+
+    }
+    public void SetPowerSlider(float power)
+    {
+        SetPowerSlider(power, 0.2f);
     }
 
     public void SetEnergy(int count)

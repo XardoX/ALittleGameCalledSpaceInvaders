@@ -16,12 +16,22 @@ public class GameManager : MonoBehaviour
 
     private int score, highscore;
 
-  
+    [SerializeField]
+    private float powerProgressAmount;
+
+    private Player player;
+
+    private float powerProgress;
+
+    private bool godMode;
 
     public void ResetGame()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        uiManager.SetEnergy(3);
         SceneManager.LoadSceneAsync("Main");
         score = 0;
+        powerProgress = 0;
         uiManager.DispayScore(score);
         uiManager.DisplayHighscore(highscore);
     }
@@ -29,12 +39,21 @@ public class GameManager : MonoBehaviour
     public void AddScore(int value)
     {
         score += value;
+        if(godMode == false)
+        {
+            powerProgress += powerProgressAmount;
+            if(powerProgress >= 1)
+            {
+                StartCoroutine(GodMode());
+            }
+        }
         if (score >= highscore)
         {
             highscore = score;
             uiManager.DisplayHighscore(highscore);
 
         }
+        uiManager.SetPowerSlider(powerProgress);
         uiManager.DispayScore(score);
     }
 
@@ -47,9 +66,11 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    private  void OnTriggerExit2D(Collider2D other)
     {
         if(other.CompareTag("Bullet"))
         {
@@ -57,6 +78,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private IEnumerator GodMode()
+    {
+        godMode = true;
+        player.ToggleGodMode(true);
+        powerProgress = 0;
+        uiManager.SetPowerSlider(powerProgress, 1f);
+        yield return new WaitForSeconds(1f);
+        player.ToggleGodMode(false);
 
+    }
 
 }

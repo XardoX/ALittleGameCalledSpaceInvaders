@@ -27,10 +27,10 @@ public class EnemyManager : MonoBehaviour
     [Space]
     [Header("Enemy Movement")]
     [SerializeField]
-    private float distance = 0.1f, 
-        
-        moveInterval = 0.1f,
-        enemyMoveRange = 5f;
+    private float distance = 0.1f;
+    [SerializeField]
+    private float moveInterval = 0.1f,
+        moveDownDistance = 0.2f;
 
     [Space]
     [Header("Fluff")]
@@ -42,8 +42,19 @@ public class EnemyManager : MonoBehaviour
 
     private int direciton = 1;
 
+    private bool goDown;
+
+    private Vector3 enemiesParentStartPos;
+
+    public void ChangeEnemyDirection()
+    {
+        direciton *= -1;
+        goDown = true;
+    }
+
     private void Start()
     {
+        enemiesParentStartPos = enemiesParent.position;
         SpawnEnemies();
         enemiesParent.position = new Vector3(enemiesParent.position.x, enemiesYStartPos, enemiesParent.position.z);
         StartCoroutine(StartEnemies());
@@ -67,6 +78,7 @@ public class EnemyManager : MonoBehaviour
                 newEnemy.transform.localPosition = spawnPosition;
                 enemies[i].Add(newEnemy);
                 newEnemy.OnDeath += OnEnemyDeath;
+                newEnemy.OnWallHit += ChangeEnemyDirection;
             }
         }
     }
@@ -104,9 +116,12 @@ public class EnemyManager : MonoBehaviour
     {
         while(true)
         {
-            if(Mathf.Abs(enemiesParent.transform.position.x) >= enemyMoveRange)
+            var currentDirection = direciton;
+            if(goDown)
             {
-                direciton = direciton * -1;
+                goDown = false;
+                enemiesParent.position += Vector3.down * moveDownDistance;
+                yield return new WaitForSeconds(moveInterval);
             }
             for (var i = 0; i < rows; i++)
             {
@@ -114,7 +129,7 @@ public class EnemyManager : MonoBehaviour
                 {
                     for (var j = 0; j < column.Count; j++)
                     {
-                        var newPosition = column[j].transform.position + (Vector3.right * distance) *direciton;
+                        var newPosition = column[j].transform.position + (Vector3.right * distance) * currentDirection;
                         column[j].transform.position = newPosition;
                         yield return new WaitForSeconds(moveInterval/2);
 

@@ -8,17 +8,27 @@ public class Ship : MonoBehaviour
     protected Bullet bullet;
     [SerializeField] private int bulletId = 1;
 
+    [SerializeField]
+    protected bool singleBulletMode = true;
+
     private void Awake()
     {
         bullet.transform.parent = null;
     }
     public virtual void Shoot(Vector3 direction)
     {
-        if (!bullet.gameObject.activeInHierarchy)
+        Bullet bulletToShoot = bullet;
+
+        if(singleBulletMode == false)
         {
-            bullet.transform.position = transform.position;
-            bullet.gameObject.SetActive(true);
-            bullet.Shoot(direction);
+            bulletToShoot = ObjectPooler.Instance.GetPooledObject(1).GetComponent<Bullet>();
+        }
+
+        if (!bulletToShoot.gameObject.activeInHierarchy)
+        {
+            bulletToShoot.transform.position = transform.position;
+            bulletToShoot.gameObject.SetActive(true);
+            bulletToShoot.Shoot(direction);
         }
         
     }
@@ -28,7 +38,7 @@ public class Ship : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Bullet"))
         {

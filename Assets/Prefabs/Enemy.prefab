@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 737642623609398776}
   bulletId: 1
+  singleBulletMode: 1
   deathParticle: {fileID: 0}
 --- !u!1001 &7786560952127286138
 PrefabInstance:

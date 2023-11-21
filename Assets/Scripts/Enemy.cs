@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Enemy : Ship, IDamagable
 {
+    public Action OnWallHit;
     public Action<Enemy> OnDeath;
 
     [SerializeField]
@@ -26,6 +27,15 @@ public class Enemy : Ship, IDamagable
 
     public void Damage()
     {
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
+        if(collision.gameObject.CompareTag("Wall"))
+        {
+            OnWallHit?.Invoke();
+        }
     }
 
 }

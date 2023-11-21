@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 8664396300805423147}
   bulletId: 1
+  singleBulletMode: 1
   health: 3
   speed: 10
   bounds: {x: 8, y: 0}
