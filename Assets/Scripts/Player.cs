@@ -49,6 +49,7 @@ public class Player : Ship, IDamagable
 
     protected override void OnDamage()
     {
+        SoundManager.PlayOnHit();
         health--;
         GameManager.instance.UIManager.SetEnergy(health);
         if(health <=0)

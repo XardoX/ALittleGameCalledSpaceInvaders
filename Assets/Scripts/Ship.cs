@@ -29,6 +29,7 @@ public class Ship : MonoBehaviour
             bulletToShoot.transform.position = transform.position;
             bulletToShoot.gameObject.SetActive(true);
             bulletToShoot.Shoot(direction);
+            SoundManager.PlayOnLaserShot();
         }
         
     }
