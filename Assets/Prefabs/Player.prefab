@@ -102,8 +102,7 @@ MonoBehaviour:
   bullet: {fileID: 8664396300805423147}
   bulletId: 1
   singleBulletMode: 1
-  health: 3
-  speed: 10
+  data: {fileID: 11400000, guid: 8e1d04d65731e1146aec1283d5c2f1df, type: 2}
   bounds: {x: 8, y: 0}
 --- !u!60 &5589675790748361469
 PolygonCollider2D:
