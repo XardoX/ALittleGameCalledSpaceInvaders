@@ -1,7 +1,7 @@
-public public class SphereScript 
+public class SphereScript
 {
      void Main()
      {
-        
+        Debug.Log("Hello World");
      }
 }
