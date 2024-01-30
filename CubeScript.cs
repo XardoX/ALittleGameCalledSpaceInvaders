@@ -1,1 +1,8 @@
-hello world
+public class CubeScript
+{
+void Main()
+{
+	print("hello world")
+}
+}
+
