@@ -1,1 +1,7 @@
-ckolowiek, swietna konstrukcja skryptu
+public public class SphereScript 
+{
+     void Main()
+     {
+        
+     }
+}
