@@ -1,4 +1,4 @@
-public public class SphereScript 
+public class SphereScript
 {
      void Main()
      {
